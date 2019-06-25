@@ -94,7 +94,10 @@ func handleStatus(w http.ResponseWriter, r *http.Request) {
 				dnsAddresses = append(dnsAddresses, addr)
 			}
 		}
+	} else {
+		dnsAddresses = strings.Split(config.DNS.BindHost, ",")
 	}
+
 	if len(dnsAddresses) == 0 {
 		dnsAddresses = append(dnsAddresses, config.DNS.BindHost)
 	}
